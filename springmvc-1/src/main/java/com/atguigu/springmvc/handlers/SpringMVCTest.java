@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
 
-//@SessionAttributes(value = {"user"}, types = {String.class})
+@SessionAttributes(value = {"user"}, types = {String.class})
 @RequestMapping("/springmvc")
 @Controller
 public class SpringMVCTest {
@@ -21,10 +21,21 @@ public class SpringMVCTest {
     private static final String SUCCESS = "success";
 
     /**
+     * 演示视图解析流程的方法
+     * @return
+     */
+    @RequestMapping("/testViewAndViewResolver")
+    public String testViewAndViewResolver(){
+        System.out.println("testViewAndViewResolver");
+        return SUCCESS;
+    }
+
+    /**
      * 1. 有 @ModelAttribute 标记的方法, 会在每个目标方法(有@RequestMapping的都会执行)执行之前被 SpringMVC 调用!
      * 2. @ModelAttribute 注解也可以来修饰目标方法 POJO 类型的入参, 其 value 属性值有如下的作用:
      * 1). SpringMVC 会使用 value 属性值在 implicitModel 中查找对应的对象, 若存在则会直接传入到目标方法的入参中.
-     * 2). SpringMVC 会一 value 为 key, POJO 类型的对象为 value, 存入到 request 中.
+     *      所以这里在@ModelAttribude标记的方法中,填个键是abc的,目标方法的入参也要指定value为abc
+     * 2). SpringMVC 会以 value 为 key, POJO 类型的对象为 value, 存入到 request 中.
      */
     @ModelAttribute
     public void getUser(@RequestParam(value="id",required=false) Integer id,
@@ -34,7 +45,7 @@ public class SpringMVCTest {
             //模拟从数据库中获取对象
             User user = new User(1, "Tom", "123456", "tom@atguigu.com", 12);
             System.out.println("从数据库中获取一个对象: " + user);
-
+            // 这里只要放的键是类名第一个字母小写,目标方法默认不用指定@ModelAttribute的value
             map.put("user", user);
         }
     }
@@ -56,6 +67,9 @@ public class SpringMVCTest {
      * 3. 若 implicitModel 中不存在 key 对应的对象, 则检查当前的 Handler 是否使用 @SessionAttributes 注解修饰,
      * 若使用了该注解, 且 @SessionAttributes 注解的 value 属性值中包含了 key, 则会从 HttpSession 中来获取 key 所
      * 对应的 value 值, 若存在则直接传入到目标方法的入参中. 若不存在则将抛出异常.
+     *      如果需要用到@SessionAttributes,要解决这个异常,
+     *      必须有@ModelAttribute修饰的方法先把@SessionAttributes中value指定的key先放到implicitModel中
+     *      或者在目标方法中指定@ModelAttribute内的value与@SessionAttributes中value指定的key不一致
      * 4. 若 Handler 没有标识 @SessionAttributes 注解或 @SessionAttributes 注解的 value 值中不包含 key, 则
      * 会通过反射来创建 POJO 类型的参数, 传入为目标方法的参数
      * 5. SpringMVC 会把 key 和 POJO 类型的对象保存到 implicitModel 中, 进而会保存到 request 中.
