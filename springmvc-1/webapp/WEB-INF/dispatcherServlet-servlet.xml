@@ -15,6 +15,12 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
+    <!-- 配置视图BeanNameViewResolver 解析器: 使用视图的名字来解析视图,可用于自定义视图 -->
+    <!-- 通过 order 属性来定义视图解析器的优先级, order 值越小优先级越高 -->
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+        <property name="order" value="100"></property>
+    </bean>
+
     <!-- 配置国际化资源文件 -->
     <bean id="messageSource"
           class="org.springframework.context.support.ResourceBundleMessageSource">

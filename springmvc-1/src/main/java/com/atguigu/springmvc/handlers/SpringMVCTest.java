@@ -20,6 +20,26 @@ public class SpringMVCTest {
 
     private static final String SUCCESS = "success";
 
+    // 转发或重定向
+    @RequestMapping("/testRedirect")
+    public String testRedirect(){
+        System.out.println("testRedirect");
+        // 如果返回的字符串中带 forward: 或 redirect: 前缀时，
+        // SpringMVC 会对他们进行特殊处理
+        return "redirect:/index.jsp";
+    }
+
+    /**
+     * 演示自定义解析器
+     * @return
+     */
+    @RequestMapping("/testView")
+    public String testView(){
+        System.out.println("testView");
+        // 返回的是HelloView.java处理的视图
+        return "helloView";
+    }
+
     /**
      * 演示视图解析流程的方法
      * @return
