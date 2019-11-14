@@ -32,14 +32,15 @@
 
 	abc user: ${requestScope.abc }
 	<br><br>
-	<%----%>
-	<%--mnxyz user: ${requestScope.mnxyz }--%>
-	<%--<br><br>--%>
-	<%----%>
-	<%--<fmt:message key="i18n.username"></fmt:message>--%>
-	<%--<br><br>--%>
-	<%----%>
-	<%--<fmt:message key="i18n.password"></fmt:message>--%>
-	<%--<br><br>--%>
+
+	mnxyz user: ${requestScope.mnxyz }
+	<br><br>
+
+	<%-- 别忘了先导入fmt标签和配置国际化文件 --%>
+	<fmt:message key="i18n.username"></fmt:message>
+	<br><br>
+
+	<fmt:message key="i18n.password"></fmt:message>
+	<br><br>
 </body>
 </html>

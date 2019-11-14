@@ -15,4 +15,17 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
+    <!-- 配置国际化资源文件 -->
+    <bean id="messageSource"
+          class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="i18n"></property>
+    </bean>
+
+    <!-- 配置直接转发的页面 -->
+    <!-- 可以直接相应转发的页面, 而无需再经过 Handler 的方法.  -->
+    <!-- 但是常见return SUCCESS 的方法会报404,解决方法看下面  -->
+    <mvc:view-controller path="/success" view-name="success"/>
+
+    <!-- 在实际开发中通常都需配置 mvc:annotation-driven 标签 -->
+    <mvc:annotation-driven></mvc:annotation-driven>
 </beans>
