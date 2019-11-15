@@ -29,8 +29,20 @@
     若没有指定该属性，则默认从 request 域对象中读取 command 的表单 bean
     如果该属性值也不存在，则会发生错误。
 -->
-<form:form action="emp" method="POST" modelAttribute="employee">
-    LastName: <form:input path="lastName"></form:input>
+<%-- 这里如果使用相对路径 action = "emp", 修改操作路径会变成提交给 http://localhost:8080/emp/emp 实际开发建议用绝对路径 --%>
+<form:form action="${pageContext.request.contextPath }/emp" method="POST" modelAttribute="employee">
+    <%-- 因为保存和更改复用一个页面,需要在这里作区分 --%>
+    <c:if test="${employee.id == null}">
+        <!-- path 属性对应 html 表单标签的 name 属性值 -->
+        LastName: <form:input path="lastName"/>
+    </c:if>
+    <c:if test="${employee.id != null}">
+        <!-- 要求修改时不能更改lastName,传id就可以了 -->
+        <form:hidden path="id"/>
+        <%-- 更新需要改为PUT请求 --%>
+        <%-- 对于 _method 不能使用 form:hidden 标签, 因为 modelAttribute 对应的 bean 中没有 _method 这个属性 --%>
+        <input type="hidden" name="_method" value="PUT">
+    </c:if>
     <br>
     Email: <form:input path="email"/>
     <br>
@@ -40,11 +52,28 @@
         genders.put("0", "Female");
         request.setAttribute("genders", genders);
     %>
-    Gender: <form:radiobuttons path="gender" items="${genders }"/>
+    <%-- delimiter：多个单选框可以通过 delimiter – 指定分隔符 --%>
+    Gender:
     <br>
+    <form:radiobuttons path="gender" items="${genders }" delimiter="<br>"/>
+    <br>
+    <%-- path 属性支持级联 --%>
+    <%--
+         items：可以是一个 List、String[] 或 Map
+         itemValue：指定 radio 的 value 值。可以是集合中 bean 的一个属性值
+         itemLabel：指定 radio 的 label – 值
+     --%>
     Department: <form:select path="department.id"
                              items="${departments }" itemLabel="departmentName" itemValue="id"></form:select>
     <br>
+    <%--
+        1. 数据类型转换
+        2. 数据类型格式化
+        3. 数据校验.
+    --%>
+    Birth: <form:input path="birth"/>
+    <br>
+    <input type="submit" value="Submit"/>
 </form:form>
 <%--<br><br>--%>
 <%--<form:form action="${pageContext.request.contextPath }/emp" method="POST"--%>
@@ -61,7 +90,7 @@
 <%--<c:if test="${employee.id != null }">--%>
 <%--<form:hidden path="id"/>--%>
 <%--<input type="hidden" name="_method" value="PUT"/>--%>
-<%--&lt;%&ndash; 对于 _method 不能使用 form:hidden 标签, 因为 modelAttribute 对应的 bean 中没有 _method 这个属性 &ndash;%&gt;--%>
+ <%--对于 _method 不能使用 form:hidden 标签, 因为 modelAttribute 对应的 bean 中没有 _method 这个属性 --%>
 <%--&lt;%&ndash;--%>
 <%--<form:hidden path="_method" value="PUT"/>--%>
 <%--&ndash;%&gt;--%>
@@ -104,7 +133,7 @@
 <%--<br>--%>
 <%--Salary: <form:input path="salary"/>--%>
 <br>
-<input type="submit" value="Submit"/>
+<%--<input type="submit" value="Submit"/>--%>
 <%--</form:form>--%>
 
 </body>
