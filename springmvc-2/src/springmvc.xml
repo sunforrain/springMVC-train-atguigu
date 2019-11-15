@@ -29,18 +29,22 @@
 	-->
 	<mvc:default-servlet-handler/>
 
-	<mvc:annotation-driven></mvc:annotation-driven>
-	<!---->
-	<!--&lt;!&ndash; 配置 ConversionService &ndash;&gt;-->
-	<!--<bean id="conversionService"-->
-		<!--class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
-		<!--<property name="converters">-->
-			<!--<set>-->
-				<!--<ref bean="employeeConverter"/>-->
-			<!--</set>-->
-		<!--</property>	-->
-	<!--</bean>-->
-	<!---->
+    <!-- 将自定义的 ConversionService 注册到Spring MVC 的上下文中 -->
+	<mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+
+	<!-- 配置 ConversionService
+	     是 Spring 类型转换体系的核心接口 -->
+    <!-- 通过 ConversionServiceFactoryBean 的 converters 属性注册自定义的类型转换器 -->
+	<bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <!-- 配置自定义的converter, 直接将一个字符串转换成一个employee对象 -->
+		<property name="converters">
+			<set>
+				<ref bean="employeeConverter"/>
+			</set>
+		</property>
+	</bean>
+
 	<!--&lt;!&ndash; 配置国际化资源文件 &ndash;&gt;-->
 	<!--<bean id="messageSource"-->
 		<!--class="org.springframework.context.support.ResourceBundleMessageSource">-->

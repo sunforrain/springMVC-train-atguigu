@@ -14,12 +14,13 @@
 </head>
 <body>
 
-<%--<form action="testConversionServiceConverer" method="POST">--%>
-<%--<!-- lastname-email-gender-department.id 例如: GG-gg@atguigu.com-0-105 -->--%>
-<%--Employee: <input type="text" name="employee"/>--%>
-<%--<input type="submit" value="Submit"/>--%>
-<%--</form>--%>
-<%--<br><br>--%>
+<%-- 自定义一个转换器,直接将一个字符串转换成一个employee对象,字符串格式如下 --%>
+<form action="${pageContext.request.contextPath }/testConversionServiceConverer" method="POST">
+    <!-- lastname-email-gender-department.id 例如: GG-gg@atguigu.com-0-105 -->
+    Employee: <input type="text" name="employee"/>
+    <input type="submit" value="Submit"/>
+</form>
+<br><br>
 
 <!--
     1. WHY 使用 form 标签呢 ?
