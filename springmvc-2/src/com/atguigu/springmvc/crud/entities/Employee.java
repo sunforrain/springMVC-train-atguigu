@@ -12,16 +12,19 @@ import org.springframework.format.annotation.NumberFormat;
 public class Employee {
 
 	private Integer id;
+	// JSR303验证用的注解, 非空
 	@NotEmpty
 	private String lastName;
 
+    // JSR303验证用的注解, 邮件格式
 	@Email
 	private String email;
 	//1 male, 0 female
 	private Integer gender;
 	
 	private Department department;
-	
+
+    // JSR303验证用的注解, 今日之前的时间
 	@Past
 	// @DateTimeFormat用于日期格式的转换,yyyy-MM-dd格式的字符串自动转为DATE类型
 	@DateTimeFormat(pattern="yyyy-MM-dd")

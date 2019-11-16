@@ -11,6 +11,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 @Controller
@@ -92,12 +93,13 @@ public class EmployeeHandlers {
      *      1) 注意指定表单的modelAttribute,来指定请求域的bean,默认是command
      *      2) 多选中items的使用
      *      3) path属性的级联
+     * 4.@Valid 让 Spring MVC 在对制定的入参完成数据绑定后执行数据校验的工作
      * @param employee
      * @param bindingResult 数据转换出现错误,错误信息会放到BindingResult中
      * @return
      */
     @RequestMapping(value = "/emp", method = RequestMethod.POST)
-    public String save(Employee employee, BindingResult bindingResult) {
+    public String save(@Valid Employee employee, BindingResult bindingResult) {
         System.out.println("save:" + employee);
         // 如果有错误信息,打印出来,这只是个初步的写法,数据转换有错误默认不会弹异常
         if (bindingResult.getErrorCount() > 0) {
