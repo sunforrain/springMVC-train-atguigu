@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 /**
  * 自定义转换器
  * 直接将一个字符串转换成一个employee对象
+ * 注册后这个格式化器会和其他格式化器一起注册到ConversionService接口的实现类之一
  * 字符串格式为
  * lastname-email-gender-department.id 例如: GG-gg@atguigu.com-0-105
  */

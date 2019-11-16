@@ -6,6 +6,9 @@ import com.atguigu.springmvc.crud.entities.Department;
 import com.atguigu.springmvc.crud.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -40,6 +43,7 @@ public class EmployeeHandlers {
      */
     @RequestMapping(value = "/emp", method = RequestMethod.PUT)
     public String update (Employee employee) {
+        System.out.println("update:" + employee);
         employeeDao.save(employee);
         return "redirect:/emps";
     }
@@ -89,10 +93,20 @@ public class EmployeeHandlers {
      *      2) 多选中items的使用
      *      3) path属性的级联
      * @param employee
+     * @param bindingResult 数据转换出现错误,错误信息会放到BindingResult中
      * @return
      */
     @RequestMapping(value = "/emp", method = RequestMethod.POST)
-    public String save(Employee employee) {
+    public String save(Employee employee, BindingResult bindingResult) {
+        System.out.println("save:" + employee);
+        // 如果有错误信息,打印出来,这只是个初步的写法
+        if (bindingResult.getErrorCount() > 0) {
+            System.out.println("出错了!");
+            // getFieldErrors可以获得错误的list
+            for(FieldError error: bindingResult.getFieldErrors()) {
+                System.out.println(error.getField() + ":" + error.getDefaultMessage());
+            }
+        }
         employeeDao.save(employee);
         return "redirect:/emps";
     }
@@ -122,4 +136,17 @@ public class EmployeeHandlers {
         map.put("employees", employeeDao.getAll());
         return "list";
     }
+
+    /**
+     * @InitBinder可以用于对 WebDataBinder 对象进行初始化。
+     * WebDataBinder 是 DataBinder 的子类，用于完成由表单字段到 JavaBean 属性的绑定
+     * @param binder
+     */
+//    @InitBinder
+//	public void initBinder(WebDataBinder binder){
+//        // 这里设置对lastName属性不进行映射.
+//        // 实际应用中可能对于角色这种,前台传进来是一个 , 分隔的字符串,后台实体类是一个集合,
+//        // 就需要不让springMVC自动映射
+//		binder.setDisallowedFields("lastName");
+//	}
 }

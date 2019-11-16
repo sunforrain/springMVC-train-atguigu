@@ -74,6 +74,8 @@
     --%>
     Birth: <form:input path="birth"/>
     <br>
+    Salary: <form:input path="salary"/>
+    <br>
     <input type="submit" value="Submit"/>
 </form:form>
 <%--<br><br>--%>

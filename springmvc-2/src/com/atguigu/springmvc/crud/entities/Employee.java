@@ -23,9 +23,11 @@ public class Employee {
 	private Department department;
 	
 	@Past
+	// @DateTimeFormat用于日期格式的转换,yyyy-MM-dd格式的字符串自动转为DATE类型
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date birth;
-	
+
+	// @NumberFormat用于数值类型转换, #代表数字, 将#,###,###.#格式的字符串转为Float类型
 	@NumberFormat(pattern="#,###,###.#")
 	private Float salary;
 
