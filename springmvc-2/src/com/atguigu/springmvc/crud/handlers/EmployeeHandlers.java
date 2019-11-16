@@ -99,7 +99,7 @@ public class EmployeeHandlers {
     @RequestMapping(value = "/emp", method = RequestMethod.POST)
     public String save(Employee employee, BindingResult bindingResult) {
         System.out.println("save:" + employee);
-        // 如果有错误信息,打印出来,这只是个初步的写法
+        // 如果有错误信息,打印出来,这只是个初步的写法,数据转换有错误默认不会弹异常
         if (bindingResult.getErrorCount() > 0) {
             System.out.println("出错了!");
             // getFieldErrors可以获得错误的list
