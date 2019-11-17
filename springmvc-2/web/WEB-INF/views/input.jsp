@@ -32,10 +32,15 @@
 -->
 <%-- 这里如果使用相对路径 action = "emp", 修改操作路径会变成提交给 http://localhost:8080/emp/emp 实际开发建议用绝对路径 --%>
 <form:form action="${pageContext.request.contextPath }/emp" method="POST" modelAttribute="employee">
+
+    <%-- path为*表示显示所有的验证错误, 也可以分开显示对应的错误 --%>
+    <form:errors path="*"></form:errors>
+    <br>
     <%-- 因为保存和更改复用一个页面,需要在这里作区分 --%>
     <c:if test="${employee.id == null}">
         <!-- path 属性对应 html 表单标签的 name 属性值 -->
         LastName: <form:input path="lastName"/>
+        <form:errors path="lastName"></form:errors>
     </c:if>
     <c:if test="${employee.id != null}">
         <!-- 要求修改时不能更改lastName,传id就可以了 -->
@@ -46,6 +51,7 @@
     </c:if>
     <br>
     Email: <form:input path="email"/>
+    <form:errors path="email"></form:errors>
     <br>
     <%
         Map<String, String> genders = new HashMap();
@@ -82,6 +88,7 @@
         3). 错误消息 ? 如何显示, 如何把错误消息进行国际化
     --%>
     Birth: <form:input path="birth"/>
+    <form:errors path="birth"></form:errors>
     <br>
     Salary: <form:input path="salary"/>
     <br>

@@ -45,12 +45,12 @@
 		</property>
 	</bean>
 
-	<!--&lt;!&ndash; 配置国际化资源文件 &ndash;&gt;-->
-	<!--<bean id="messageSource"-->
-		<!--class="org.springframework.context.support.ResourceBundleMessageSource">-->
-		<!--<property name="basename" value="i18n"></property>-->
-	<!--</bean>-->
-	<!---->
+	<!-- 配置国际化资源文件 -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="i18n"></property>
+	</bean>
+
 	<!--&lt;!&ndash; 配置 SessionLocalResolver &ndash;&gt;-->
 	<!--<bean id="localeResolver"-->
 		<!--class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>-->

@@ -5,24 +5,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<%--<script type="text/javascript" src="scripts/jquery-1.9.1.min.js"></script>--%>
-<%--<script type="text/javascript">--%>
-	<%--$(function(){--%>
-		<%--$("#testJson").click(function(){--%>
-			<%--var url = this.href;--%>
-			<%--var args = {};--%>
-			<%--$.post(url, args, function(data){--%>
-				<%--for(var i = 0; i < data.length; i++){--%>
-					<%--var id = data[i].id;--%>
-					<%--var lastName = data[i].lastName;--%>
-					<%----%>
-					<%--alert(id + ": " + lastName);--%>
-				<%--}--%>
-			<%--});--%>
-			<%--return false;--%>
-		<%--});--%>
-	<%--})--%>
-<%--</script>--%>
+<script type="text/javascript" src="${pageContext.request.contextPath }/scripts/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#testJson").click(function(){
+			var url = this.href;
+			var args = {};
+			$.post(url, args, function(data){
+				for(var i = 0; i < data.length; i++){
+					var id = data[i].id;
+					var lastName = data[i].lastName;
+
+					alert(id + ": " + lastName);
+				}
+			});
+			return false;
+		});
+	})
+</script>
 </head>
 <body>
 	
@@ -33,13 +33,13 @@
 	<%--</form>--%>
 	<%----%>
 	<%--<br><br>--%>
-	<%----%>
-	<%--<a href="emps">List All Employees</a>--%>
-	<%--<br><br>--%>
-	<%----%>
-	<%--<a href="testJson" id="testJson">Test Json</a>--%>
-	<%--<br><br>--%>
-	<%----%>
+
+	<a href="emps">List All Employees</a>
+	<br><br>
+
+	<a href="testJson" id="testJson">Test Json</a>
+	<br><br>
+
 	<%--<form action="testHttpMessageConverter" method="POST" enctype="multipart/form-data">--%>
 		<%--File: <input type="file" name="file"/>--%>
 		<%--Desc: <input type="text" name="desc"/>--%>
@@ -76,7 +76,5 @@
 	<br><br>
 	<a href="testSimpleMappingExceptionResolver?i=2">Test SimpleMappingExceptionResolver</a>
 
-    <br><br>
-	<a href="emps">List All Employees</a>
 </body>
 </html>

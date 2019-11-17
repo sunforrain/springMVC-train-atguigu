@@ -93,13 +93,14 @@ public class EmployeeHandlers {
      *      1) 注意指定表单的modelAttribute,来指定请求域的bean,默认是command
      *      2) 多选中items的使用
      *      3) path属性的级联
-     * 4.@Valid 让 Spring MVC 在对制定的入参完成数据绑定后执行数据校验的工作
+     * 4.@Valid 让 Spring MVC 在对指定的入参完成数据绑定后执行数据校验的工作
+     * 5.需校验的 Bean 对象和其绑定结果对象或错误对象时成对出现的，它们之间不允许声明其他的入参
      * @param employee
      * @param bindingResult 数据转换出现错误,错误信息会放到BindingResult中
      * @return
      */
     @RequestMapping(value = "/emp", method = RequestMethod.POST)
-    public String save(@Valid Employee employee, BindingResult bindingResult) {
+    public String save(@Valid Employee employee, BindingResult bindingResult, Map<String, Object> map) {
         System.out.println("save:" + employee);
         // 如果有错误信息,打印出来,这只是个初步的写法,数据转换有错误默认不会弹异常
         if (bindingResult.getErrorCount() > 0) {
@@ -108,6 +109,8 @@ public class EmployeeHandlers {
             for(FieldError error: bindingResult.getFieldErrors()) {
                 System.out.println(error.getField() + ":" + error.getDefaultMessage());
             }
+            map.put("departments",departmentDao.getDepartments());
+            return "input";
         }
         employeeDao.save(employee);
         return "redirect:/emps";
