@@ -61,6 +61,7 @@
 		解决:
 		1. 使用 JSTL 的 fmt 标签(见i18n.jsp和i18n2.jsp的写法)
 		2. 在 bean 中注入 ResourceBundleMessageSource 的实例, 使用其对应的 getMessage 方法即可
+		    (见testI18n()方法)
 		3. 配置 LocalResolver 和 LocaleChangeInterceptor
 	-->
 	<br><br>

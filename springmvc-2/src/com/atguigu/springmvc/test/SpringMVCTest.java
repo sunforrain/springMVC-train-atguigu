@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -29,6 +30,15 @@ public class SpringMVCTest {
     // 处理国际化需要注入ResourceBundleMessageSource的实例
     @Autowired
     private ResourceBundleMessageSource messageSource;
+
+    @RequestMapping("/testFileUpload")
+    public String testFileUpload(@RequestParam("desc") String desc,
+                                 @RequestParam("file") MultipartFile file) throws IOException{
+        System.out.println("desc: " + desc);
+        System.out.println("OriginalFilename: " + file.getOriginalFilename());
+        System.out.println("InputStream: " + file.getInputStream());
+        return "success";
+    }
 
     /**
      * 将i18n这个链接改为在handler处理国际化,注意区分这里和用jstl标签处理的区别
