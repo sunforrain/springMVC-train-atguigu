@@ -3,6 +3,7 @@ package com.atguigu.springmvc.test;
 import com.atguigu.springmvc.crud.dao.EmployeeDao;
 import com.atguigu.springmvc.crud.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,11 +19,28 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Locale;
 
 @Controller
 public class SpringMVCTest {
     @Autowired
     private EmployeeDao employeeDao;
+
+    // 处理国际化需要注入ResourceBundleMessageSource的实例
+    @Autowired
+    private ResourceBundleMessageSource messageSource;
+
+    /**
+     * 将i18n这个链接改为在handler处理国际化,注意区分这里和用jstl标签处理的区别
+     * @param locale 与浏览器的语言设置相关
+     * @return
+     */
+    @RequestMapping("/i18n")
+    public String testI18n(Locale locale){
+        String val = messageSource.getMessage("i18n.user", null, locale);
+        System.out.println(val);
+        return "i18n";
+    }
 
     /**
      * ttpMessageConverter实现类的测试方法2
