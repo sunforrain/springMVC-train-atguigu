@@ -26,14 +26,16 @@
 </script>
 </head>
 <body>
-	
-	<%--<form action="testFileUpload" method="POST" enctype="multipart/form-data">--%>
-		<%--File: <input type="file" name="file"/>--%>
-		<%--Desc: <input type="text" name="desc"/>--%>
-		<%--<input type="submit" value="Submit"/>--%>
-	<%--</form>--%>
-	<%----%>
-	<%--<br><br>--%>
+
+	<%-- 测试文件上传的表单
+	    这个是正经的上传--%>
+	<form action="testFileUpload" method="POST" enctype="multipart/form-data">
+		File: <input type="file" name="file"/>
+		Desc: <input type="text" name="desc"/>
+		<input type="submit" value="Submit"/>
+	</form>
+
+	<br><br>
 
 	<a href="emps">List All Employees</a>
 	<br><br>
@@ -41,7 +43,8 @@
 	<a href="testJson" id="testJson">Test Json</a>
 	<br><br>
 
-    <%-- testHttpMessageConverter, 搞一个文件上传的效果 --%>
+    <%-- testHttpMessageConverter, 搞一个文件上传的效果
+        但是这个会把表单的内容和文件的内容一起上传,需要区分,没有实际的应用价值 --%>
 	<form action="testHttpMessageConverter" method="POST" enctype="multipart/form-data">
 		File: <input type="file" name="file"/>
 		Desc: <input type="text" name="desc"/>

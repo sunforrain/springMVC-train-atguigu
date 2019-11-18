@@ -31,6 +31,13 @@ public class SpringMVCTest {
     @Autowired
     private ResourceBundleMessageSource messageSource;
 
+    /**
+     * 文件上传的测试,这个是正经的上传
+     * @param desc
+     * @param file
+     * @return
+     * @throws IOException
+     */
     @RequestMapping("/testFileUpload")
     public String testFileUpload(@RequestParam("desc") String desc,
                                  @RequestParam("file") MultipartFile file) throws IOException{
@@ -84,6 +91,7 @@ public class SpringMVCTest {
      * HttpMessageConverter实现类的测试方法,
      * 以及@ResponseBody和@RequestBody的示例
      * 这里实现了一个文件上传
+     * 但是这个会把表单的内容和文件的内容一起上传,需要区分,没有实际的应用价值
      * 这里是入参和返回的都是字符串,一般入参用byte[]数组其实
      * 因而都会调用StringHttpMessageConverter
      * @return
