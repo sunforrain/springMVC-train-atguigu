@@ -40,16 +40,17 @@
 	<a href="testJson" id="testJson">Test Json</a>
 	<br><br>
 
-	<%--<form action="testHttpMessageConverter" method="POST" enctype="multipart/form-data">--%>
-		<%--File: <input type="file" name="file"/>--%>
-		<%--Desc: <input type="text" name="desc"/>--%>
-		<%--<input type="submit" value="Submit"/>--%>
-	<%--</form>--%>
-	<%----%>
-	<%--<br><br>--%>
-	<%----%>
-	<%--<a href="testResponseEntity">Test ResponseEntity</a>--%>
-	<%----%>
+    <%-- testHttpMessageConverter, 搞一个文件上传的效果 --%>
+	<form action="testHttpMessageConverter" method="POST" enctype="multipart/form-data">
+		File: <input type="file" name="file"/>
+		Desc: <input type="text" name="desc"/>
+		<input type="submit" value="Submit"/>
+	</form>
+
+	<br><br>
+
+	<a href="testResponseEntity">Test ResponseEntity</a>
+
 	<%--<!--  --%>
 		<%--关于国际化:--%>
 		<%--1. 在页面上能够根据浏览器语言设置的情况对文本(不是内容), 时间, 数值进行本地化处理--%>
