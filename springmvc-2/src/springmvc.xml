@@ -60,11 +60,11 @@
 		<bean class="com.atguigu.springmvc.interceptors.FirstInterceptor"></bean>
 
 		<!-- 配置拦截器(不)作用的路径 -->
-		<mvc:interceptor>
-			<mvc:mapping path="/emps"/>
-			<!--<mvc:exclude-mapping path="/emps"/>-->
-			<bean class="com.atguigu.springmvc.interceptors.SecondInterceptor"></bean>
-		</mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/emps"/>
+            <!--<mvc:exclude-mapping path="/emps"/>-->
+            <bean class="com.atguigu.springmvc.interceptors.SecondInterceptor"></bean>
+        </mvc:interceptor>
 
 		<!-- 配置 LocaleChanceInterceptor -->
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"></bean>
