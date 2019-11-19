@@ -56,14 +56,15 @@
 		class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
 
 	<mvc:interceptors>
-		<!--&lt;!&ndash; 配置自定义的拦截器 &ndash;&gt;-->
-		<!--<bean class="com.atguigu.springmvc.interceptors.FirstInterceptor"></bean>-->
-		<!---->
-		<!--&lt;!&ndash; 配置拦截器(不)作用的路径 &ndash;&gt;-->
-		<!--<mvc:interceptor>-->
-			<!--<mvc:mapping path="/emps"/>-->
-			<!--<bean class="com.atguigu.springmvc.interceptors.SecondInterceptor"></bean>-->
-		<!--</mvc:interceptor>-->
+		<!-- 配置自定义的拦截器 -->
+		<bean class="com.atguigu.springmvc.interceptors.FirstInterceptor"></bean>
+
+		<!-- 配置拦截器(不)作用的路径 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/emps"/>
+			<!--<mvc:exclude-mapping path="/emps"/>-->
+			<bean class="com.atguigu.springmvc.interceptors.SecondInterceptor"></bean>
+		</mvc:interceptor>
 
 		<!-- 配置 LocaleChanceInterceptor -->
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"></bean>
