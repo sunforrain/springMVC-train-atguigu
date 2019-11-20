@@ -8,10 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
@@ -30,6 +27,34 @@ public class SpringMVCTest {
     // 处理国际化需要注入ResourceBundleMessageSource的实例
     @Autowired
     private ResourceBundleMessageSource messageSource;
+
+    /**
+     * 演示DefaultHandlerExceptionResolver
+     * 这里前台传的是GET请求,人为制造一个HttpRequestMethodNotSupportedException
+     * @return
+     */
+    @RequestMapping(value="/testDefaultHandlerExceptionResolver",method=RequestMethod.POST)
+    public String testDefaultHandlerExceptionResolver(){
+        System.out.println("testDefaultHandlerExceptionResolver...");
+        return "success";
+    }
+
+    /**
+     * @ResponseStatus使用的演示,放在目标方法上,无论有没有异常都会返回对应的状态码
+     * @param i
+     * @return
+     */
+    @ResponseStatus(reason="测试",value=HttpStatus.NOT_FOUND)
+    @RequestMapping("/testResponseStatusExceptionResolver")
+    public String testResponseStatusExceptionResolver(@RequestParam("i") int i){
+        // 传入的参数是13的时候弹我们自定义的异常
+        if(i == 13){
+            throw new UserNameNotMatchPasswordException();
+        }
+        System.out.println("testResponseStatusExceptionResolver...");
+
+        return "success";
+    }
 
     //	@ExceptionHandler({RuntimeException.class})
 //	public ModelAndView handleArithmeticException2(Exception ex){

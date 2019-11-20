@@ -75,10 +75,10 @@
 	<a href="testExceptionHandlerExceptionResolver?i=0">Test ExceptionHandlerExceptionResolver</a>
 
 	<br><br>
-	<%--<a href="testResponseStatusExceptionResolver?i=10">Test ResponseStatusExceptionResolver</a>--%>
-	<%----%>
-	<%--<br><br>--%>
-	<%--<a href="testDefaultHandlerExceptionResolver">Test DefaultHandlerExceptionResolver</a>--%>
+	<a href="testResponseStatusExceptionResolver?i=10">Test ResponseStatusExceptionResolver</a>
+
+	<br><br>
+	<a href="testDefaultHandlerExceptionResolver">Test DefaultHandlerExceptionResolver</a>
 	
 	<br><br>
 	<a href="testSimpleMappingExceptionResolver?i=2">Test SimpleMappingExceptionResolver</a>
