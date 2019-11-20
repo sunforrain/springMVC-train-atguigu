@@ -48,6 +48,7 @@ public class SpringMVCTest {
 
     /**
      * 演示DefaultHandlerExceptionResolver
+     * 具体包含哪些异常可以看源码
      * 这里前台传的是GET请求,人为制造一个HttpRequestMethodNotSupportedException
      * @return
      */
