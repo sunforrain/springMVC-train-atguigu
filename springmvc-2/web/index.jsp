@@ -81,7 +81,7 @@
 	<a href="testDefaultHandlerExceptionResolver">Test DefaultHandlerExceptionResolver</a>
 	
 	<br><br>
-	<a href="testSimpleMappingExceptionResolver?i=2">Test SimpleMappingExceptionResolver</a>
+	<a href="testSimpleMappingExceptionResolver?i=13">Test SimpleMappingExceptionResolver</a>
 
 </body>
 </html>

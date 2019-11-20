@@ -29,6 +29,24 @@ public class SpringMVCTest {
     private ResourceBundleMessageSource messageSource;
 
     /**
+     * 演示SimpleMappingExceptionResolver
+     * 这里用前台传的数大于10,造了个数组下标越界异常
+     *
+     * 如果希望对所有异常进行统一处理，可以使用SimpleMappingExceptionResolver，
+     * 它将异常类名映射为视图名，即发生异常时使用对应的视图报告异常
+     *
+     * SimpleMappingExceptionResolver是这里演示的异常处理类中唯一一个需要在配置文件中配置的
+     * @param i
+     * @return
+     */
+    @RequestMapping("/testSimpleMappingExceptionResolver")
+    public String testSimpleMappingExceptionResolver(@RequestParam("i") int i){
+        String [] vals = new String[10];
+        System.out.println(vals[i]);
+        return "success";
+    }
+
+    /**
      * 演示DefaultHandlerExceptionResolver
      * 这里前台传的是GET请求,人为制造一个HttpRequestMethodNotSupportedException
      * @return

@@ -83,14 +83,16 @@
 		<property name="maxUploadSize" value="1024000"></property>
 	</bean>
 
-	<!--&lt;!&ndash; 配置使用 SimpleMappingExceptionResolver 来映射异常 &ndash;&gt;-->
-	<!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+	<!-- 配置使用 SimpleMappingExceptionResolver 来映射异常 -->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<!-- 这里配置返回给视图的异常信息的key -->
 		<!--<property name="exceptionAttribute" value="ex"></property>-->
-		<!--<property name="exceptionMappings">-->
-			<!--<props>-->
-				<!--<prop key="java.lang.ArrayIndexOutOfBoundsException">error</prop>-->
-			<!--</props>-->
-		<!--</property>-->
-	<!--</bean>	-->
+		<!-- 这里配置异常对应的视图 -->
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.ArrayIndexOutOfBoundsException">error</prop>
+			</props>
+		</property>
+	</bean>
 		
 </beans>
