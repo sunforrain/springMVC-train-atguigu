@@ -51,7 +51,8 @@
 		<property name="basename" value="i18n"></property>
 	</bean>
 
-	<!-- 配置 SessionLocalResolver -->
+	<!-- 配置 本地化解析器,用于获取请求所对应的本地化信息,用于国际化
+	    SessionLocalResolver 根据 Session 中特定的属性确定本地化类型-->
 	<bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
 
@@ -66,7 +67,8 @@
             <bean class="com.atguigu.springmvc.interceptors.SecondInterceptor"></bean>
         </mvc:interceptor>
 
-		<!-- 配置 LocaleChanceInterceptor -->
+		<!-- 配置 动态更改本地化类型的拦截器,
+			LocaleChanceInterceptor 可以通过指定一个请求参数就可以控制单个请求的本地化类型-->
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"></bean>
 	</mvc:interceptors>
 

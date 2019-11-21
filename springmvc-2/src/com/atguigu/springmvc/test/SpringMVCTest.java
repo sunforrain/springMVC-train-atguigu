@@ -59,7 +59,8 @@ public class SpringMVCTest {
     }
 
     /**
-     * @ResponseStatus使用的演示,放在目标方法上,无论有没有异常都会返回对应的状态码
+     * 演示ResponseStatusExceptionResolver
+     * @ResponseStatus 使用的演示,放在目标方法上,无论有没有异常都会返回对应的状态码
      * @param i
      * @return
      */
