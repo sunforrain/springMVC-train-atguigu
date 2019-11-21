@@ -5,15 +5,27 @@
          version="4.0">
     <!-- 配置启动 Spring IOC 容器的 Listener -->
     <!-- needed for ContextLoaderListener -->
-    <!--<context-param>-->
-        <!--<param-name>contextConfigLocation</param-name>-->
-        <!--<param-value>classpath:beans.xml</param-value>-->
-    <!--</context-param>-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:beans.xml</param-value>
+    </context-param>
 
-    <!-- Bootstraps the root web application context before servlet initialization -->
-    <!--<listener>-->
-        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
-    <!--</listener>-->
+    <!--Bootstraps the root web application context before servlet initialization-->
+    <!--
+        spring放置在web应用必须配置ContextLoaderListener, 这是spring
+        在web应用启动的，ContextLoaderListener读取contextConfigLocation中定义的xml文件，
+        自动装配ApplicationContext的配置信息，并产生WebApplicationContext对象，
+        然后将这个对象放置在ServletContext的属性里，
+        这样我们就可以在servlet里得到WebApplicationContext对象。
+
+        如果不配置,会找不到spring IOC容器包含的bean,但是springMVC不存在这个问题,springMVC是
+        随着servlet启动的,因此是在servlet标签内配置springMVC
+
+        Spring MVC WEB 层容器可作为 “业务层” Spring 容器的子容器：
+    -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
     <servlet>
         <servlet-name>springDispatcherServlet</servlet-name>
