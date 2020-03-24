@@ -11,22 +11,23 @@
 <body>
 	
 	<h4>Sucess Page</h4>
-	
+
+	<%--任务14：SpringMVC_处理模型数据之ModelAndView--%>
 	time: ${requestScope.time }
 	<br><br>
-
+	<%--任务15：SpringMVC_处理模型数据之Map--%>
 	names: ${requestScope.names }
 	<br><br>
-
+	<%--任务16：SpringMVC_处理模型数据之SessionAttributes注解,requestScope--%>
 	request user: ${requestScope.user }
 	<br><br>
-
+	<%--任务16：SpringMVC_处理模型数据之SessionAttributes注解,sessionScope--%>
 	session user: ${sessionScope.user }
 	<br><br>
-
+	<%--任务16：SpringMVC_处理模型数据之SessionAttributes注解,指定type类型--%>
 	request school: ${requestScope.school }
 	<br><br>
-
+	<%--任务16：SpringMVC_处理模型数据之SessionAttributes注解,指定type类型--%>
 	session school: ${sessionScope.school }
 	<br><br>
 
