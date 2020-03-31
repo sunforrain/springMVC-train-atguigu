@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * 自定义的视图
+ * 任务27：SpringMVC_自定义视图 自定义的视图
  */
 @Component
 public class HelloView implements View {

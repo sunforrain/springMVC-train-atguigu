@@ -20,16 +20,19 @@ public class SpringMVCTest {
 
     private static final String SUCCESS = "success";
 
+    // 任务28：SpringMVC_重定向
     // 转发或重定向
     @RequestMapping("/testRedirect")
     public String testRedirect(){
         System.out.println("testRedirect");
         // 如果返回的字符串中带 forward: 或 redirect: 前缀时，
         // SpringMVC 会对他们进行特殊处理
+        // forward 执行转发, redirect执行重定向
         return "redirect:/index.jsp";
     }
 
     /**
+     * 任务27：SpringMVC_自定义视图
      * 演示自定义解析器
      * @return
      */
@@ -41,6 +44,7 @@ public class SpringMVCTest {
     }
 
     /**
+     * 任务24
      * 演示视图解析流程的方法
      * @return
      */

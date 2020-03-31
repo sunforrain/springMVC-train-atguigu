@@ -8,9 +8,11 @@
 </head>
 <body>
 
+<%--任务28：SpringMVC_重定向--%>
 <a href="springmvc/testRedirect">Test Redirect</a>
 <br><br>
 
+<%--任务27：SpringMVC_自定义视图--%>
 <a href="springmvc/testView">Test View</a>
 <br><br>
 

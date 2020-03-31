@@ -37,7 +37,7 @@
 	mnxyz user: ${requestScope.mnxyz }
 	<br><br>
 
-	<%-- 别忘了先导入fmt标签和配置国际化文件 --%>
+	<%-- 任务25：SpringMVC_JstlView 别忘了先导入fmt标签和配置国际化文件 --%>
 	<fmt:message key="i18n.username"></fmt:message>
 	<br><br>
 
