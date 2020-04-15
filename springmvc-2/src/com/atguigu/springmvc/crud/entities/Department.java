@@ -1,5 +1,6 @@
 package com.atguigu.springmvc.crud.entities;
 
+// 任务30：SpringMVC_RESTRUL_CRUD_显示所有员工信息
 public class Department {
 
 	private Integer id;

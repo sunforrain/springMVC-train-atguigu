@@ -3,8 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <!-- 配置 SpringMVC 的 DispatcherServlet -->
-    <!-- The front controller of this Spring Web application, responsible for handling all application requests -->
+    <!-- 任务30：SpringMVC_RESTRUL_CRUD_显示所有员工信息
+        配置 SpringMVC 的 DispatcherServlet,这里手动定义spring配置文件 -->
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -21,7 +21,8 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!-- 配置 HiddenHttpMethodFilter: 把 POST 请求转为 DELETE、PUT 请求 -->
+    <!-- 任务30：SpringMVC_RESTRUL_CRUD_显示所有员工信息
+        配置 HiddenHttpMethodFilter: 把 POST 请求转为 DELETE、PUT 请求 -->
     <filter>
         <filter-name>HiddenHttpMethodFilter</filter-name>
         <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>

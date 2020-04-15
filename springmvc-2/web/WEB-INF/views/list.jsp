@@ -7,17 +7,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<!--  
+<!--
+	任务32：SpringMVC_RESTRUL_CRUD_删除操作&处理静态资源
 	SpringMVC 处理静态资源:
 	1. 为什么会有这样的问题:
 	优雅的 REST 风格的资源URL 不希望带 .html 或 .do 等后缀
-	若将 DispatcherServlet 请求映射配置为 /, 
-	则 Spring MVC 将捕获 WEB 容器的所有请求, 包括静态资源的请求, SpringMVC 会将他们当成一个普通请求处理, 
+	若将 DispatcherServlet 请求映射配置为 /,
+	则 Spring MVC 将捕获 WEB 容器的所有请求, 包括静态资源的请求, SpringMVC 会将他们当成一个普通请求处理,
 	因找不到对应处理器将导致错误。
 	2. 解决: 在 SpringMVC 的配置文件中配置 <%--<mvc:default-servlet-handler/>--%>
 -->
 <script type="text/javascript" src="scripts/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
+	// 任务32：SpringMVC_RESTRUL_CRUD_删除操作&处理静态资源
     // 转化a标签的连接为一个POST,其实是将a的href值放到form的action 中 然后提交form表单
 	$(function(){
 	    // class为delete的元素,点击事件
@@ -31,11 +33,13 @@
 </script>
 </head>
 <body>
+	<%--任务32：SpringMVC_RESTRUL_CRUD_删除操作&处理静态资源--%>
 	<%-- 用于删除时提交DELETE请求的表单 --%>
 	<form action="" method="POST">
         <input type="hidden" name="_method" value="DELETE"/>
     </form>
 
+	<%--任务30：SpringMVC_RESTRUL_CRUD_显示所有员工信息--%>
     <c:if test="${empty requestScope.employees }">
 		没有任何员工信息.
 	</c:if>
@@ -60,6 +64,7 @@
 					<td>${emp.department.departmentName }</td>
                     <%-- 修改要带id --%>
 					<td><a href="emp/${emp.id}">Edit</a></td>
+					<%--任务32：SpringMVC_RESTRUL_CRUD_删除操作&处理静态资源--%>
 					<%-- 删除要带id --%>
                     <%-- 正常超链接是GET请求,要借助jQuery转成POST,才能传DELETE类型 --%>
 					<td><a class="delete" href="emp/${emp.id}">Delete</a></td>

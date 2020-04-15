@@ -69,6 +69,7 @@ public class EmployeeHandlers {
     }
 
     /**
+     * 任务32：SpringMVC_RESTRUL_CRUD_删除操作&处理静态资源
      * 删除employee
      * 注意点:
      *  1. handler目标方法测参数使用PathVariable从页面链接获取id
@@ -85,6 +86,7 @@ public class EmployeeHandlers {
     }
 
     /**
+     * 任务31：SpringMVC_RESTRUL_CRUD_添加操作&表单标签
      * 保存employee的方法,保存操作使用POST
      * 注意点:
      * 1. 保存相关的两个目标方法,URL是一样的,method不同
@@ -117,6 +119,7 @@ public class EmployeeHandlers {
     }
 
     /**
+     * 任务31：SpringMVC_RESTRUL_CRUD_添加操作&表单标签
      * 跳转到添加employee 的页面的目标方法,需要指定method为get,我们是RESTFUL的
      * @param map
      * @return
@@ -131,6 +134,7 @@ public class EmployeeHandlers {
     }
 
     /**
+     * 任务30：SpringMVC_RESTRUL_CRUD_显示所有员工信息
      * 简单遍历 employee的list
      * @param map
      * @return

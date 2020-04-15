@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
+// 任务30：SpringMVC_RESTRUL_CRUD_显示所有员工信息
 public class Employee {
 
 	private Integer id;
