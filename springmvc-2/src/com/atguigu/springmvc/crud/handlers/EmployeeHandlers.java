@@ -25,6 +25,7 @@ public class EmployeeHandlers {
 
 
     /**
+     * 任务33：SpringMVC_RESTRUL_CRUD_修改操作
      * 更新employee需要用到的@ModelAttribute方法,防止存进去空值
      * @param id
      * @param map
@@ -38,6 +39,7 @@ public class EmployeeHandlers {
     }
 
     /**
+     * 任务33：SpringMVC_RESTRUL_CRUD_修改操作
      * 更新employee
      * @param employee
      * @return
@@ -50,6 +52,7 @@ public class EmployeeHandlers {
     }
 
     /**
+     * 任务33：SpringMVC_RESTRUL_CRUD_修改操作
      * 更改employee前,获得反显数据并转到imput视图
      * 注意点:
      *  1. update与save的input方法不能写一起,因为用于获取id这个参数在save中没有

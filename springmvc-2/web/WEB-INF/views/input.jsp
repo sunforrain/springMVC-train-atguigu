@@ -43,11 +43,13 @@
             <form:errors path="lastName"></form:errors>
         </c:if>
         <c:if test="${employee.id != null}">
-            <!-- 要求修改时不能更改lastName,传id就可以了 -->
+            <!-- 任务33：SpringMVC_RESTRUL_CRUD_修改操作
+                要求修改时不能更改lastName,传id就可以了 -->
             <form:hidden path="id"/>
+            <input type="hidden" name="_method" value="PUT">
             <%-- 更新需要改为PUT请求 --%>
             <%-- 对于 _method 不能使用 form:hidden 标签, 因为 modelAttribute 对应的 bean 中没有 _method 这个属性 --%>
-            <input type="hidden" name="_method" value="PUT">
+            <%--<form:hidden path="_method" value="PUT"/>--%>
         </c:if>
         <br>
         Email: <form:input path="email"/>
@@ -74,6 +76,7 @@
                                  items="${departments }" itemLabel="departmentName" itemValue="id"></form:select>
         <br>
         <%--
+            任务34：SpringMVC_数据绑定流程分析
             1. 数据类型转换
             2. 数据类型格式化
             3. 数据校验.
